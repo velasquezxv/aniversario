@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Carta de Amor</title>
+  <style>
+    body {
+      background-color: #ffc0cb;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+      margin: 0;
+      flex-direction: column;
+      position: relative;
+    }
+    .container {
+      text-align: center;
+      padding: 2rem;
+      margin-bottom: 20px;
+      z-index: 1; /* Para asegurarse de que esté debajo de la lluvia de corazones */
+    }
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+    p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+    }
+    .btn {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+    }
+    .boton-corazon {
+      padding: 12px 25px;
+      font-size: 20px;
+      background-color: #ff3366;
+      color: white;
+      border: none;
+      cursor: pointer;
+      border-radius: 8px;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+    .boton-corazon:hover {
+      background-color: #e63950;
+    }
+    .carta {
+      width: 90%;
+      max-width: 500px;
+      background-color: #ffb3c6;
+      padding: 20px;
+      border-radius: 20px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      text-align: center;
+      display: none;
+      border: 5px solid white;
+      position: relative;
+      z-index: 2;
+    }
+    .carta h1 {
+      color: #ff3366;
+      font-family: 'Courier New', Courier, monospace;
+    }
+    .carta p {
+      color: #800000;
+      font-size: 16px;
+      font-family: 'Georgia', serif;
+      margin-top: 15px;
+      line-height: 1.4;
+    }
+    .boton-cerrar {
+      padding: 10px 20px;
+      font-size: 14px;
+      background-color: #ff4d6d;
+      color: white;
+      border: none;
+      cursor: pointer;
+      border-radius: 8px;
+      font-weight: bold;
+      transition: 0.3s;
+      margin-top: 15px;
+      display: none;
+    }
+    .boton-cerrar:hover {
+      background-color: #e63950;
+    }
+    .corazon, .rosa {
+      position: absolute;
+      color: red;
+      font-size: 20px;
+      opacity: 0.8;
+      animation: caer 7s linear infinite, brillo 1.5s infinite alternate; /* Aumenté la duración de la caída */
+      pointer-events: none;
+      z-index: 10; /* Hace que los corazones y las rosas se ubiquen encima de todo */
+    }
+    .rosa {
+      color: #ff007f; /* Color de la rosa */
+    }
+    @keyframes caer {
+      0% {
+        transform: translateY(-100vh) rotate(0deg);
+      }
+      100% {
+        transform: translateY(100vh) rotate(360deg);
+      }
+    }
+    @keyframes brillo {
+      0% {
+        text-shadow: 0 0 5px rgba(255, 0, 0, 0.8);
+      }
+      100% {
+        text-shadow: 0 0 15px rgba(255, 0, 0, 1);
+      }
+    }
+    @media screen and (max-width: 600px) {
+      h1 {
+        font-size: 1.6rem;
+      }
+      p {
+        font-size: 1rem;
+      }
+      .boton-corazon {
+        font-size: 16px;
+        padding: 10px 20px;
+      }
+      .carta p {
+        font-size: 0.9rem;
+      }
+      .carta h1 {
+        font-size: 1.6rem;
+      }
+    }
+
+    /* Estilo de los mensajes bajo el botón NO */
+    .mensaje {
+      color: #800000;
+      font-size: 16px;
+      margin-top: 10px;
+      display: none;
+    }
+
+    /* Animación del agrandado del botón "SI" */
+    .boton-corazon:active {
+      transform: scale(1.2); /* Se agranda el botón cuando se presiona */
+    }
+  </style>
+</head>
+<body>
+  <div class="container" id="main-container">
+    <h1>¿Te gustaría leer mis sentimientos? 🥰</h1>
+    <p>Para mi amorcito con mucho cariño</p>
+    <div class="btn">
+      <button class="boton-corazon" id="siBtn">SHI ❤️</button>
+      <button class="boton-corazon" id="noBtn">ÑO 💔</button>
+    </div>
+    <div class="mensaje" id="mensaje1">¿Estás segura?</div>
+    <div class="mensaje" id="mensaje2">Perdoname por las veces que te hice sentir mal shi?</div>
+    <div class="mensaje" id="mensaje3">No seas enojoncita mi gruñona</div>
+    <div class="mensaje" id="mensaje4">Hermosa sigues aun aqui ñamm</div>
+    <div class="mensaje" id="mensaje5">Ya te quiero comer todo mi amorcito </div>
+    <div class="mensaje" id="mensaje6">TE AMO MUCHO Y PERDONAMEEE</div>
+    <div class="mensaje" id="mensaje7">Ve al otro boton mi gordita</div>
+  </div>
+
+  <div class="carta" id="carta">
+    <h1>FELIZ ANIVERSARIO MI GORDITA ❤️</h1>
+    <p class="message">
+      Mi amor hoy cumplimos 1 mes más juntos, y no es un día cualquiera por qué hoy celebramos el día que oficializamos por primera vez nuestra relación como novios
+      y como compañeros de vida que se amarán y respetarán a pesar de los problemas o malos entendidos que aparecerán en nuestro camino.
+      Gracias por elegirme y seguir eligiéndome a pesar de los malos entendidos o de la distancia, estoy seguro y convencido de que pronto acabará eso y estaremos juntos🌹
+      Te amo con todo mi corazón y te pido disculpas por las veces que fui distante o discutíamos por todo, te juro que odié esa etapa de nuestra vida porque era alguien muy tonto que se dejaba guiar
+      por sus personalidad estupida. Ahora sé que no vale la pena reaccionar impulsivamente como un tonto, porque me ciega totalmente y lastimo a mi amorcito que siempre trata de estar conmigo dándome su amor sincero...
+      Quiero lograr a tu lado nuestras promesas y sueños❤️ Quiero hacer todo a tu lado❤️
+    </p>
+    <p>❤️ TE AMO DE AQUÍ HASTA EL INFINITO Y MÁS ALLÁ mi Dayanita ❤️</p>
+    <p class="message">
+      Mi princesaa hermosaaa déjame decirte que odio escucharte decir que no te gusta algunas partes de tu físico, que por esa inseguridad no logras usar ropa a tu gusto o que no te sientas cómoda contigo misma, pero...
+      déjame decirte que eres una tonta porque amor mío eres un mujerón, un tremendo bombón🍫 suculento y muy sexy que me tiene muy enamorado con ese cuerpazo tan bonito que te cargas mi princesa, me gusta como eres
+      y como te ves... te pido que por favor mi amor ya no le des importancia a esas tonterías, ¿si? eres mi niña perfecta💘
+    </p>
+    <button class="boton-cerrar" onclick="cerrarCarta()">Regresa aquí bb</button>
+  </div>
+
+  <script>
+    const siBtn = document.getElementById('siBtn');
+    const noBtn = document.getElementById('noBtn');
+    const carta = document.getElementById('carta');
+    const mainContainer = document.getElementById('main-container');
+    const mensajes = [
+      document.getElementById('mensaje1'),
+      document.getElementById('mensaje2'),
+      document.getElementById('mensaje3'),
+      document.getElementById('mensaje4'),
+      document.getElementById('mensaje5'),
+      document.getElementById('mensaje6'),
+      document.getElementById('mensaje7')
+    ];
+
+    // Función para crear la lluvia de corazones
+    function crearLluviaCorazones() {
+      const corazon = document.createElement('div');
+      corazon.innerHTML = '❤️';
+      corazon.classList.add('corazon');
+      document.body.appendChild(corazon);
+      corazon.style.left = Math.random() * window.innerWidth + 'px';
+      corazon.style.top = '-20px';
+      corazon.style.fontSize = Math.random() * 30 + 10 + 'px';
+      setTimeout(() => corazon.remove(), 15000); // Los corazones desaparecerán después de 15 segundos
+    }
+
+    // Función para crear la lluvia de rosas
+    function crearLluviaRosas() {
+      const rosa = document.createElement('div');
+      rosa.innerHTML = '🌹';
+      rosa.classList.add('rosa');
+      document.body.appendChild(rosa);
+      rosa.style.left = Math.random() * window.innerWidth + 'px';
+      rosa.style.top = '-20px';
+      rosa.style.fontSize = Math.random() * 30 + 10 + 'px';
+      setTimeout(() => rosa.remove(), 15000); // Las rosas desaparecerán después de 15 segundos
+    }
+
+    // Iniciar la lluvia de corazones y rosas desde el inicio
+    setInterval(crearLluviaCorazones, 1000); // Generar corazones cada 1 segundo
+    setInterval(crearLluviaRosas, 1000); // Generar rosas cada 1 segundo
+
+    siBtn.addEventListener('click', () => {
+      mainContainer.style.display = 'none';
+      carta.style.display = 'block';
+      // Comenzar a crear más corazones y rosas al abrir la carta
+      setInterval(crearLluviaCorazones, 1000); // Generar corazones cada 1 segundo
+      setInterval(crearLluviaRosas, 1000); // Generar rosas cada 1 segundo
+      // Agrandar el botón SI
+      siBtn.style.transform = "scale(1.2)";
+    });
+
+    noBtn.addEventListener('click', () => {
+      // Si se presiona "NO", mostrar los mensajes
+      mensajes.forEach((mensaje, index) => {
+        setTimeout(() => {
+          mensaje.style.display = 'block';
+        }, index * 1000); // Mostrar los mensajes uno por uno con un intervalo de 1 segundo
+      });
+    });
+
+    function cerrarCarta() {
+      carta.style.display = 'none';
+      mainContainer.style.display = 'flex';
+    }
+  </script>
+</body>
+</html>
